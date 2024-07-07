@@ -1,0 +1,15 @@
+{
+  "name": "api_riego",
+  "version": "1.0.0",
+  "description": "Api para el sistema de riego",
+  "main": "index.mjs",
+  "scripts": {
+    "dev": "npm -watch index.mjs"
+  },
+  "type":"modules",
+  "author": "JB_hb",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.19.2"
+  }
+}
