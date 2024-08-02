@@ -113,13 +113,14 @@ export class Stations_Module{
 				.update({Plant: content.planta, Sustrato: content.sustrato, Change_Date: content.change})
 				.eq({Id:station})
 			
-			if(error){
-				return({message: 'error al actualizar la estacion', error: error})
-			}
-
-			const {error} = await supabase
+			if(!error){
+				const {error} = await supabase
 				.from('Actions')
 				.insert({Action:'patch info work station', User_Id:user, Station_Id:station})
+			}else
+			{
+				return({message: 'error al actualizar la estacion', error: error})
+			}
 
 			if(error){
 				console.log(error)
