@@ -130,7 +130,7 @@ export class Stations_Module{
 
 		}
 
-		return({message: 'no se encontro la estacion de trabajo', error:01})
+		return({message: 'no se encontro la estacion de trabajo', error: 1})
 
 	}
 	
