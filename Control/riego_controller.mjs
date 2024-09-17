@@ -22,4 +22,10 @@ export class Riego_Controller {
 		res.status(200).json(respuesta)
 	}
 
+	static async Get_Pins (req, res){
+		const { serial } = req.params
+		const respuesta = await Stations_Module.get_pins_stations(serial) //funcion para obtener la direccion mac y el pin de cada estacion de un frame
+		res.status(200).json(respuesta)
+	}
+
 }

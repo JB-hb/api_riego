@@ -12,5 +12,6 @@ riego_router.post('sync/UD/:id_num', (req, res) => { //solicitud del dispositivo
 	res.status(404).json({message: "Work in Progress"})
 })
 
-riego_router.get('/info/get/:serial_num', Riego_Controller.Get_Info);
-riego_router.patch('info/patch/:serial_num', Riego_Controller.Patch_Info);
+riego_router.get('/info/get/:serial', Riego_Controller.Get_Info);
+riego_router.patch('info/patch/:serial', Riego_Controller.Patch_Info);
+riego_router.get('info/frame/get-pins/:serial', Riego_Controller.Get_Pins);
