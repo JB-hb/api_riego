@@ -98,6 +98,21 @@ export class Stations_Module{
 		}
 	}
 
+	static async get_pins_stations(frame){
+
+		const {data, error} = await supabase
+			.from('working_station')
+			.select(`mac,
+					 pin`)
+			.eq('Frame_Id', frame)
+		
+		if(data && (data.length > 0))
+		{
+			return(data)
+		}
+		
+	}
+
 	static async act_info(user, station, content){
 
 		const {data, error} = await supabase
