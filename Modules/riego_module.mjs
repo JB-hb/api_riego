@@ -100,15 +100,23 @@ export class Stations_Module{
 
 	static async get_pins_stations(frame){
 
-		const {data, error} = await supabase
-			.from('working_station')
-			.select(`mac,
+		try{
+
+			const {data, error} = await supabase
+				.from('working_station')
+				.select(`mac,
 					 pin`)
-			.eq('Frame_Id', frame)
-		
-		if(data && (data.length > 0))
-		{
-			return(data)
+				.eq('Frame_Id', frame)
+
+			if(data && (data.length > 0))
+			{
+				return(data)
+			}
+
+			return(error)
+
+		}catch(error){
+			console.log(error)
 		}
 		
 	}
