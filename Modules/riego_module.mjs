@@ -103,7 +103,7 @@ export class Stations_Module{
 		try{
 
 			const {data, error} = await supabase
-				.from('working_station')
+				.from('working_stations')
 				.select(`mac,
 					 pin`)
 				.eq('Frame_Id', frame)
