@@ -116,7 +116,7 @@ export class Stations_Module{
 			{
 				for(let i = 0; i < data.length; i++)
 				{
-					resp.data.append(data[i])
+					resp.data.push(data[i])
 				}
 				return(resp)
 			}
