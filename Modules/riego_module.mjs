@@ -114,7 +114,7 @@ export class Stations_Module{
 
 			if(data && (data.length > 0))
 			{
-				for(let i = 0, i < data.length, i++)
+				for(let i = 0; i < data.length; i++)
 				{
 					resp.data.append(data[i])
 				}
