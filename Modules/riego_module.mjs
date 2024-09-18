@@ -102,6 +102,10 @@ export class Stations_Module{
 
 		try{
 
+			let resp = {
+				data:[]
+			}
+
 			const {data, error} = await supabase
 				.from('working_stations')
 				.select(`mac,
@@ -110,7 +114,11 @@ export class Stations_Module{
 
 			if(data && (data.length > 0))
 			{
-				return(data)
+				for(let i = 0, i < data.length, i++)
+				{
+					resp.data.append(data[i])
+				}
+				return(resp)
 			}
 
 			return(error)
