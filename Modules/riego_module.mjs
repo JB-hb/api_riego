@@ -19,7 +19,7 @@ export class Riego_Module{
 						 )`)
 				.eq("mac", addr)
 
-			let new_h = (humidity - 1000)*100/3000
+			let new_h = parseInt(((humidity - 1000)*100)/3000)
 			if(new_h < 0)
 			{
 				new_h = 0
