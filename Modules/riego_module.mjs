@@ -20,7 +20,10 @@ export class Riego_Module{
 				.eq("mac", addr)
 
 			let new_h = (humidity-1000)*100/3000
-			new_h < 0 && new_h = 0
+			if(new_h < 0)
+			{
+				new_h = 0
+			}
 			new_h = 100 - new_h
 			
 			if(Station && (Station.length > 0))
