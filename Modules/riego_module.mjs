@@ -24,7 +24,7 @@ export class Riego_Module{
 
 				const {error} = await supabase
 					.from("Medidas")
-					.insert({Humidity: humidity, Temp: temperature, Station_Id: data[0].Id})
+					.insert({Humidity: humidity, Temp: temperature, Station_Id: Station[0].Id})
 
 				if(humidity < Station[0].Plantas[0].humidity)
 				{
