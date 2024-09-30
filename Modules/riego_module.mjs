@@ -20,7 +20,6 @@ export class Riego_Module{
 				.eq("mac", addr)
 
 			let new_h = (humidity - 1000)*100/3000
-			console.log("aja")
 			if(new_h < 0)
 			{
 				new_h = 0
@@ -33,6 +32,8 @@ export class Riego_Module{
 				const {error} = await supabase
 					.from("Medidas")
 					.insert({Humidity: new_h, Temp: temperature, Station_Id: Station[0].Id})
+
+				console.log(Station)
 
 				if(new_h < Station[0].Plantas[0].humidity)
 				{
