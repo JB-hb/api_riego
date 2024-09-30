@@ -26,7 +26,7 @@ export class Riego_Module{
 					.from("Medidas")
 					.insert({Humidity: humidity, Temp: temperature, Station_Id: data[0].Id})
 
-				if(humidity < data[0].Plantas[0].humidity)
+				if(humidity < Station[0].Plantas[0].humidity)
 				{
 					return({station: addr, active: 1})
 				}else
