@@ -33,7 +33,10 @@ export class Riego_Module{
 					.from("Medidas")
 					.insert({Humidity: new_h, Temp: temperature, Station_Id: Station[0].Id})
 
-				console.log(Station)
+				if(error)
+				{
+					console.log(error);
+				}
 
 				if(new_h < Station[0].Plantas.humidity)
 				{
