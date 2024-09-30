@@ -3,7 +3,7 @@ import { Riego_Controller } from '../Control/riego_controller.mjs'
 
 export const riego_router = Router();
 
-riego_router.get('/consult', Riego_Controller.Consult_Riego);
+riego_router.post('/consult', Riego_Controller.Consult_Riego);
 
 riego_router.post('/sync/ET/:id_num', (req,res) => { //solicitud de la estacion de trabajo
 	Mes.status(404).json({message: "Work in Progress"})

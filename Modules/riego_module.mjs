@@ -7,20 +7,42 @@ const supabase = createClient(url, key);
 
 export class Riego_Module{
 
-	static async consult_riego (){
+	static async consult_riego (temperature, humidity, addr){
 
 		try{
-			const{ data: Plantas, error } = await supabase
-				.from("Plantas")
-				.select("*")
-			if(Plantas)
+			const{ data: Station, error } = await supabase
+				.from("working_stations")
+				.select(`*, 
+						 Plantas(
+						 	temperature,
+							humidity
+						 )`)
+				.eq("mac", addr)
+			
+			if(Station && (Station.length > 0))
 			{
-				return(Plantas)
+
+				const {error} = await supabase
+					.from("Medidas")
+					.insert({Humidity: humidity, Temp: temperature, Station_Id: data[0].Id})
+
+				if(humidity < data[0].Plantas[0].humidity)
+				{
+					return({station: addr, active: 1})
+				}else
+				{
+					return({station: addr, active: 0})
+				}
+
 			}
-		}catch(error)
+
+			return({error:"non-station"})
+
+		}
+		catch(error)
 		{
 			console.log(error)
-			return(NULL)
+			return({error:"non-station"})
 		}
 	}
 
