@@ -35,7 +35,7 @@ export class Riego_Module{
 
 				console.log(Station)
 
-				if(new_h < Station[0].Plantas[0].humidity)
+				if(new_h < Station[0].Plantas.humidity)
 				{
 					return({station: addr, active: 1})
 				}else
