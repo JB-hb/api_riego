@@ -24,7 +24,7 @@ export class Riego_Module{
 			if(Station && (Station.length > 0))
 			{
 
-				const { data:last_read, error } = await supabase
+				const { data:last_read } = await supabase
 					.from("Medidas")
 					.select("Temp, Humdity")
 					.limit(1)
