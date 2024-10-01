@@ -1,5 +1,5 @@
 import {createClient} from "@supabase/supabase-js"
-import ollama form 'ollama'
+import ollama from 'ollama'
 
 const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJleWpodnBvZnR4eWFjemZpbGhtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyMDAyMjk4OSwiZXhwIjoyMDM1NTk4OTg5fQ.VZztDvhMUwqvmlnbNN0jjrNkxZTpzRVU3JqoqjTn0OE';
 const url = 'https://beyjhvpoftxyaczfilhm.supabase.co';
