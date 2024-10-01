@@ -40,10 +40,10 @@ export class Riego_Module{
 
 				if(new_h < Station[0].Plantas.humidity)
 				{
-					return({station: addr, active: 1})
+					return({station: addr, active: 1, pin: Station[0].pin})
 				}else
 				{
-					return({station: addr, active: 0})
+					return({station: addr, active: 0, pin: Station[0].pin})
 				}
 
 			}
