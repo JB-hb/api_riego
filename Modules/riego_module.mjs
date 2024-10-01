@@ -20,22 +20,21 @@ export class Riego_Module{
 						 )`)
 				.eq("mac", addr)
 
-			let new_h = parseInt(((humidity - 1000)*100)/3000)
-			if(new_h < 0)
-			{
-				new_h = 0
-			}
-			new_h = 100 - new_h
-
-			const response = await ollama.chat({
-				model: 'llama3.1',
-				messages: [{ role: 'user', content: 'cuanto es 2 + 2' }],
-			})
-
-			console.log(response.message.content)
-			
+						
 			if(Station && (Station.length > 0))
 			{
+
+				const { data:last_read, error } await supabase
+					.from("Medidas")
+					.select("Temp, Humdity")
+					.limit(1)
+
+				let new_h = parseInt(((humidity - 1000)*100)/3000)
+				if(new_h < 0)
+				{
+					new_h = 0
+				}
+				new_h = 100 - new_h
 
 				const {error} = await supabase
 					.from("Medidas")
@@ -45,6 +44,14 @@ export class Riego_Module{
 				{
 					console.log(error);
 				}
+
+				try{
+
+					const response = await ollama.chat({
+						model: 'llama3.1',
+						messages: [{ role: 'user', content: `teniendo en cuenta dos medidas que fueron tomadas con 5 min de diferencia medida 1: temperatura ${last_read.temp} humedad ${last_read.humidity} y medida 2: temperatura ${temperature} humedad ${new_h} extrapola el valor de la humedad 5 min despues de la ultima medida, no necesito explicacion del proceso, el mensaje debe contener solo el valor de la humedad extrapolada`}],})
+					new_h = parseInt(response.message.content)
+				}catch(error){}
 
 				if(new_h < Station[0].Plantas.humidity)
 				{
