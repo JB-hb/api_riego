@@ -1,4 +1,5 @@
 import {createClient} from "@supabase/supabase-js"
+import ollama form 'ollama'
 
 const key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJleWpodnBvZnR4eWFjemZpbGhtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyMDAyMjk4OSwiZXhwIjoyMDM1NTk4OTg5fQ.VZztDvhMUwqvmlnbNN0jjrNkxZTpzRVU3JqoqjTn0OE';
 const url = 'https://beyjhvpoftxyaczfilhm.supabase.co';
@@ -25,6 +26,13 @@ export class Riego_Module{
 				new_h = 0
 			}
 			new_h = 100 - new_h
+
+			const response = await ollama.chat({
+				model: 'llama3.1',
+				messages: [{ role: 'user', content: 'cuanto es 2 + 2' }],
+			})
+
+			console.log(response.message.content)
 			
 			if(Station && (Station.length > 0))
 			{
